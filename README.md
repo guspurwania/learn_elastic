@@ -12,7 +12,7 @@ Konfigurasi Custom Framework CodeIgniter ini saya buat bagi temen-temen yang mas
 
 ## Installation
 
-### With Composer
+### With Git
 
 Clone Git Repository
 ~~~
@@ -27,7 +27,7 @@ $ composer install
 
 Setup Selesai. Cek Project pada Browser Anda.
 
-### Without Composer
+### Without Git
 
 Download manual melalui Github.
 Unzip dan install pada folder project Anda.
