@@ -32,6 +32,13 @@ Setup Selesai. Cek Project pada Browser Anda.
 Download manual melalui Github.
 Unzip dan install pada folder project Anda.
 
+Install Vendor
+~~~
+$ composer install
+~~~
+
+Setup Selesai. Cek Project pada Browser Anda.
+
 ### Setup .htaccess
 ~~~
 RewriteEngine on
