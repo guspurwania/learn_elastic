@@ -50,3 +50,5 @@ Berikut merupakan referensi dokumentasi dari package yang digunakan pada CodeLar
 - **[Illuminate Events](https://github.com/illuminate/events)**
 - **[A fully RESTful server implementation for CodeIgniter using one library, one config file and one controller](https://github.com/chriskacerguis/codeigniter-restserver)**
 - **[Simple and Lightweight Auth System for CodeIgniter](https://github.com/benedmunds/CodeIgniter-Ion-Auth)**
+- **[Ramsey UUID](https://github.com/ramsey/uuid)**
+
