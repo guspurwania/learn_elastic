@@ -15,9 +15,7 @@ class Twitter extends CI_Controller {
         $client = ClientBuilder::create()->build();
 
         $params = [
-            'index' => 'my_index',
-            'type' => 'my_type',
-            'id' => 'my_id',
+            'index' => 'my_index2',
             'body' => [
                 'mappings' => [
                     'statuses' => [
@@ -28,19 +26,25 @@ class Twitter extends CI_Controller {
                             'created_at'=> ['type' => 'date'],
                             'id_str'=> ['type' => 'text'],
                             'entities'=> [
-                                'urls'=> array(),
-                                'hashtags'=> array(
-                                    'text'=> ['type' => 'text'],
-                                    'indices'=> array()
-                                ),
-                                'user_mentions'=> array()
+                                'properties' => [
+                                    'urls'=> new \stdClass(),
+                                    'hashtags'=> [
+                                        'properties'=> [
+                                            'text'=> ['type' => 'text'],
+                                            'indices'=> new \stdClass()
+                                        ]
+                                    ],
+                                    'user_mentions'=> new \stdClass()
+                                ]
                             ],
                             'in_reply_to_user_id_str'=> ['type' => 'text'],
                             'contributors'=> ['type' => 'text'],
                             'text'=> ['type' => 'text'],
                             'metadata'=> [
-                                'iso_language_code'=> ['type' => 'text'],
-                                'result_type'=> ['type' => 'text']
+                                'properties'=> [
+                                    'iso_language_code'=> ['type' => 'text'],
+                                    'result_type'=> ['type' => 'text']
+                                ]
                             ],
                             'retweet_count'=> ['type' => 'integer'],
                             'in_reply_to_status_id_str'=> ['type' => 'text'],
@@ -50,56 +54,58 @@ class Twitter extends CI_Controller {
                             'in_reply_to_user_id'=> ['type' => 'text'],
                             'place'=> ['type' => 'text'],
                             'user'=> [
-                                'profile_sidebar_fill_color'=> ['type' => 'text'],
-                                'profile_sidebar_border_color'=> ['type' => 'text'],
-                                "profile_background_tile"=> ['type' => 'boolean'],
-                                "name"=> ['type' => 'text'],
-                                "profile_image_url"=> ['type' => 'text'],
-                                "created_at"=> ['type' => 'date'],
-                                "location"=> ['type' => 'text'],
-                                "follow_request_sent"=> ['type' => 'text'],
-                                "profile_link_color"=> ['type' => 'text'],
-                                "is_translator"=> ['type' => 'boolean'],
-                                "id_str"=> ['type' => 'text'],
-                                "entities"=> [
-                                  "url"=> [
-                                    "urls"=> array(
-                                        "expanded_url"=> ['type' => 'text'],
-                                        "url"=> ['type' => 'text'],
-                                        "indices"=> array()
-                                    )
-                                  ],
-                                  "description"=> [
-                                    "urls"=> array()
-                                  ]
-                                ],
-                                "default_profile"=> ['type' => 'boolean'],
-                                "contributors_enabled"=> ['type' => 'boolean'],
-                                "favourites_count"=> ['type' => 'integer'],
-                                "url"=> ['type' => 'text'],
-                                "profile_image_url_https"=> ['type' => 'text'],
-                                "utc_offset"=> ['type' => 'integer'],
-                                "id"=> ['type' => 'text'],
-                                "profile_use_background_image"=> ['type' => 'boolean'],
-                                "listed_count"=> ['type' => 'integer'],
-                                "profile_text_color"=> ['type' => 'text'],
-                                "lang"=> ['type' => 'text'],
-                                "followers_count"=> ['type' => 'integer'],
-                                "protected"=> ['type' => 'boolean'],
-                                "notifications"=> ['type' => 'text'],
-                                "profile_background_image_url_https"=> ['type' => 'text'],
-                                "profile_background_color"=> ['type' => 'text'],
-                                "verified"=> ['type' => 'boolean'],  
-                                "geo_enabled"=> ['type' => 'boolean'],
-                                "time_zone"=> ['type' => 'text'],
-                                "description"=> ['type' => 'text'],
-                                "default_profile_image"=> ['type' => 'boolean'],
-                                "profile_background_image_url"=> ['type' => 'text'],
-                                "statuses_count"=> ['type' => 'integer'],
-                                "friends_count"=> ['type' => 'integer'],
-                                "following"=> ['type' => 'text'],
-                                "show_all_inline_media"=> ['type' => 'boolean'],
-                                "screen_name"=> ['type' => 'text']
+                                'properties' => [
+                                    'profile_sidebar_fill_color'=> ['type' => 'text'],
+                                    'profile_sidebar_border_color'=> ['type' => 'text'],
+                                    "profile_background_tile"=> ['type' => 'boolean'],
+                                    "name"=> ['type' => 'text'],
+                                    "profile_image_url"=> ['type' => 'text'],
+                                    "created_at"=> ['type' => 'date'],
+                                    "location"=> ['type' => 'text'],
+                                    "follow_request_sent"=> ['type' => 'text'],
+                                    "profile_link_color"=> ['type' => 'text'],
+                                    "is_translator"=> ['type' => 'boolean'],
+                                    "id_str"=> ['type' => 'text'],
+                                    "entities"=> [
+                                      "url"=> [
+                                        "urls"=> array(
+                                            "expanded_url"=> ['type' => 'text'],
+                                            "url"=> ['type' => 'text'],
+                                            "indices"=> array()
+                                        )
+                                      ],
+                                      "description"=> [
+                                        "urls"=> array()
+                                      ]
+                                    ],
+                                    "default_profile"=> ['type' => 'boolean'],
+                                    "contributors_enabled"=> ['type' => 'boolean'],
+                                    "favourites_count"=> ['type' => 'integer'],
+                                    "url"=> ['type' => 'text'],
+                                    "profile_image_url_https"=> ['type' => 'text'],
+                                    "utc_offset"=> ['type' => 'integer'],
+                                    "id"=> ['type' => 'text'],
+                                    "profile_use_background_image"=> ['type' => 'boolean'],
+                                    "listed_count"=> ['type' => 'integer'],
+                                    "profile_text_color"=> ['type' => 'text'],
+                                    "lang"=> ['type' => 'text'],
+                                    "followers_count"=> ['type' => 'integer'],
+                                    "protected"=> ['type' => 'boolean'],
+                                    "notifications"=> ['type' => 'text'],
+                                    "profile_background_image_url_https"=> ['type' => 'text'],
+                                    "profile_background_color"=> ['type' => 'text'],
+                                    "verified"=> ['type' => 'boolean'],  
+                                    "geo_enabled"=> ['type' => 'boolean'],
+                                    "time_zone"=> ['type' => 'text'],
+                                    "description"=> ['type' => 'text'],
+                                    "default_profile_image"=> ['type' => 'boolean'],
+                                    "profile_background_image_url"=> ['type' => 'text'],
+                                    "statuses_count"=> ['type' => 'integer'],
+                                    "friends_count"=> ['type' => 'integer'],
+                                    "following"=> ['type' => 'text'],
+                                    "show_all_inline_media"=> ['type' => 'boolean'],
+                                    "screen_name"=> ['type' => 'text']
+                                ]
                             ],
                             "in_reply_to_screen_name"=> ['type' => 'text'],
                             "source"=> ['type' => 'text'],
@@ -110,7 +116,7 @@ class Twitter extends CI_Controller {
             ]
         ];
 
-        $response = $client->indicies()->create($params);
+        $response = $client->indices()->create($params);
 
         // $tweets = $this->twitterfetcher->getTweets(array(
         //     'consumerKey'       => 'q0S84thQXmqAkAkYlgiRxfsCZ',

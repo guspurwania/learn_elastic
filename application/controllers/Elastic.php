@@ -15,8 +15,6 @@ class Elastic extends CI_Controller {
 
         $params = [
             'index' => 'my_index',
-            'type' => 'my_type',
-            'id' => 'my_id',
             'body' => [
                 'mappings' => [
                     'my_type' => [
@@ -31,6 +29,6 @@ class Elastic extends CI_Controller {
             ]
         ];
 
-        $response = $client->indicies()->create($params);
+        $response = $client->indices()->create($params);
     }
 }
