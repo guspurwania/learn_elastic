@@ -15,7 +15,8 @@
 		"kenjis/codeigniter-ss-twig": "^0.2.1",
 		"illuminate/database": "5.0.28",
 		"illuminate/events": "5.0.28",
-		"ramsey/uuid": "^3.6"
+		"ramsey/uuid": "^3.6",
+		"elasticsearch/elasticsearch": "^5.2"
 	},
 	"autoload": {
 		"classmap": [
